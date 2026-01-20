@@ -1,42 +1,56 @@
+@import "tailwindcss";
+
+
+@keyframes float {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-500px) scale(1.5); opacity: 0; }
+}
+
+.animate-float {
+  animation: float linear forwards;
+}
+
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --pink: #FF9EBB;
+  --rose: #FF6F91;
+  --peach: #FFC6AA;
+  --cream: #FFF3EC;
+  --heart: #FF0037;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
 body {
-  max-width: 100vw;
+  background: linear-gradient(180deg, var(--cream), #fff);
   overflow-x: hidden;
 }
 
+.cute-shadow {
+  box-shadow: 0 10px 30px rgba(255, 110, 160, 0.2);
+}
+
+.heart-cursor {
+  cursor: pointer;
+}
+
+
+
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  @apply bg-gradient-to-b from-rose-50 to-pink-100 font-serif overflow-x-hidden;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+/* Button hover */
+.button-hover:hover {
+  @apply scale-105 shadow-lg transition-transform duration-300;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* Particle styling */
+.particle {
+  @apply absolute rounded-full pointer-events-none;
+  animation: floatParticle linear infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+@keyframes floatParticle {
+  0% { transform: translateY(0) scale(0.5); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(-800px) scale(1); opacity: 0; }
 }
